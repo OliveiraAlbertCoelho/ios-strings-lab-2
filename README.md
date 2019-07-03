@@ -8,8 +8,22 @@ You are given a string stored in variable `problem`. Write code so that you prin
 
 ```swift
 var problem = "split this string into words and print them on separate lines"
+var word = ""
+var array = [String] ()
+for a in problem{
+if a == " "{
+array.append(word)
+word = ""
+continue
+}
+word += String(a)
+}
+array.append(word)
+for a in array{
+print(a)
+print("")
+}
 
-// Your code
 ```
 
 Example
@@ -38,8 +52,17 @@ lines
 Given a string `testString` create a new variable called `condensedString` that has any consecutive spaces in `testString` replaced with a single space.
 
 ```swift
-let testString = "  How   about      thesespaces  ?  "
-//condensedString = " How about thesespaces ? "
+var problem = "  How   about      these spaces  ?  "
+var word = ""
+var array = problem.components(separatedBy: .whitespacesAndNewlines)
+array.append(word)
+for b in array where b != "" {
+if b != " " {
+word += b
+word += " "
+}
+}
+print(word)
 ```
 
 
@@ -52,8 +75,32 @@ Example:
 Sample Input: `"Swift is the best language"`
 
 Sample Output: `"language best the is Swift"`
+```swift
+let problem = "Swift is the best language"
+var word = ""
+var minus = 0
+var array = [String] ()
+var newWord = ""
+for a in problem{
+if a == " "{
+array.append(word)
+word = ""
+continue
+}
+word += String(a)
+}
+array.append(word)
 
+minus = array.count-1
 
+for _ in array{
+newWord += array[minus] + " "
+minus  -= 1
+
+}
+print(newWord)
+
+```
 ## Question 4
 
 Given a string with multiple words. Write code that prints how many of them are palindromes.
@@ -63,7 +110,29 @@ Example:
 Sample Input: `"danaerys dad cat civic bottle"`
 
 Sample Output: `2`
-
+```swift
+var problem = "danaerys dad cat civic bottle"
+var reverString = ""
+var word = ""
+var trueCounter = 0
+var array = [String] ()
+for a in problem{
+if a == " "{
+array.append(word)
+word = ""
+continue
+}
+word += String(a)
+}
+array.append(word)
+for b in array {
+reverString = String(b.reversed())
+if b == reverString{
+trueCounter += 1
+}
+}
+print(trueCounter)
+```
 
 ## Question 5
 
@@ -82,6 +151,23 @@ Example:
 Sample Input: `"PPALLP"`
 
 Sample Output: `true`
+```swift
+var sampleInput = "PPALLP"
+var A = 0
+for a in sampleInput {
+if a == "A" {
+A += 1
+}
+}
+if A > 1{
+print(false)
+} else if sampleInput.contains("LLL") {
+print (false)
+}else {
+print(true)
+}
+
+```
 
 
 ## Question 6
@@ -91,11 +177,7 @@ Given a tuple with two strings. The first string is a **ransom note**, the secon
 Each letter from the magazine can only be used once. You can assume all letters are lowercased.
 
 Examples:
+ 
 
-Sample Input1: `("a", "b")`
+ 
 
-Sample Output1: `False`
-
-Sample Input2: `("aa", "aab")`
-
-Sample Output2: `True`
