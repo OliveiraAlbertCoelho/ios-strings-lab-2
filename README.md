@@ -178,6 +178,34 @@ Each letter from the magazine can only be used once. You can assume all letters 
 
 Examples:
  
+ ```swift
+ func verify(note: String, chars: String) -> Bool {
+ var dict = [String : Int]()
+ for char in chars {
+ 
+ dict[String(char), default: 0] += 1
+ }
+ 
+ for char in note {
+ if String(char) == " " { continue }
+ dict[String(char), default: 0] -= 1
+ }
+ 
+ for count in dict.values {
+ if count < 0 {
+ return false
+ }
+ }
+ 
+ return true
+ }
+ 
+ verify(note: "a", chars: "b")
+ verify(note: "aa", chars: "aab")
+ verify(note: "a a", chars: "aa")
+ 
+ 
+ ```
 
  
 
